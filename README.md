@@ -10,5 +10,7 @@ B2B Calculator is application that allows users who are emplyed on contract (B2B
 Application created for training purpose.
 Program logic reflects the law used Poland.
 
-Preview:
+Application Preview:
 ![ScreenShot](http://i.imgur.com/UnHLf7k.png)
+
+Theme: sap_belize
