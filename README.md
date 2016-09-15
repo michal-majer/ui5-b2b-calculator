@@ -11,4 +11,4 @@ Application created for training purpose.
 Program logic reflects the law used Poland.
 
 Preview:
-![ScreenShot](https://www.dropbox.com/s/uuriw0yd4dzozr3/chrome_2016-09-15_15-09-17.png?dl=0)
+![ScreenShot](http://i.imgur.com/UnHLf7k.png)
