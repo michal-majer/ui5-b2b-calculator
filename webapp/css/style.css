@@ -1,0 +1,43 @@
+/* Enter your custom styles here */
+.sapMSLI {
+	height: 2rem;
+}
+.sapMSLITitleOnly {
+	font-size: 0.8rem;
+}
+
+/*
+.sapMListHdr {
+	 background-color: #DDE5EC; 
+}
+*/
+
+.sapMIBar-CTX .sapMTitle {
+	font-size: 1.2rem;
+}
+
+/* Popover */
+.popover-content-center {
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+.popover-content-social-center {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.social-icon {
+	padding: 0px 5px 0px 5px;
+}
+
+.sapMFlexItem {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.launchpad-header {
+	font-size: 18px;
+	color: white;
+}

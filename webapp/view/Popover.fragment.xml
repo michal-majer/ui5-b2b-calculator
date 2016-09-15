@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" class="sapUiContentPadding" placement="Top">
+		<l:VerticalLayout>
+			<l:HorizontalLayout class="popover-content-center">
+				<l:content>
+					<Link text="Michał Majer" emphasized="true" target="_blank" href="https://pl.linkedin.com/in/michał-majer-73a015100"/>
+					<core:HTML
+						content="&lt;i style=&quot; padding:2px 5px 0px 5px;&quot; class=&quot;fa fa-heart&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;"/>
+					<Image src="./image/sap-logo.png"/>
+				</l:content>
+			</l:HorizontalLayout>
+			<l:HorizontalLayout>
+				<l:content>
+					<core:HTML
+						content="&lt;a href=&quot;https://www.facebook.com/sapujpl/ &quot; target=&quot;_blank&quot;&gt;&lt;image src=&quot; ./image/facebook-logo.jpg&quot; height=&quot;15px&quot; class=&quot;social-icon&quot;/&gt;&lt;/a&gt;"></core:HTML>
+					<core:HTML
+						content="&lt;a href=&quot;https://twitter.com/sapujpl/ &quot; target=&quot;_blank&quot;&gt;&lt;image src=&quot; ./image/twitter-logo.png&quot; height=&quot;15px&quot; class=&quot;social-icon&quot;/&gt;&lt;/a&gt;"></core:HTML>
+					<core:HTML
+						content="&lt;a href=&quot;https://pl.linkedin.com/in/michał-majer-73a015100 &quot; target=&quot;_blank&quot;&gt;&lt;image src=&quot; ./image/linkedin-logo.png&quot; height=&quot;15px&quot; class=&quot;social-icon&quot;/&gt;&lt;/a&gt;"></core:HTML>
+					<core:HTML
+						content="&lt;a href=&quot;https://www.goldenline.pl/michal-majer8/ &quot; target=&quot;_blank&quot;&gt;&lt;image src=&quot; ./image/goldenline-logo.png&quot; height=&quot;15px&quot; class=&quot;social-icon&quot;/&gt;&lt;/a&gt;"></core:HTML>
+					<core:HTML
+						content="&lt;a href=&quot;https://github.com/michal-majer &quot; target=&quot;_blank&quot;&gt;&lt;image src=&quot; ./image/github-logo.png&quot; height=&quot;15px&quot; class=&quot;social-icon&quot;/&gt;&lt;/a&gt;"></core:HTML>
+					<core:HTML
+						content="&lt;a href=&quot;http://scn.sap.com/people/majer.michal &quot; target=&quot;_blank&quot;&gt;&lt;image src=&quot; ./image/scn-logo.png&quot; height=&quot;15px&quot; class=&quot;social-icon&quot;/&gt;&lt;/a&gt;"></core:HTML>
+				</l:content>
+			</l:HorizontalLayout>
+		</l:VerticalLayout>
+	</Popover>
+</core:FragmentDefinition>
