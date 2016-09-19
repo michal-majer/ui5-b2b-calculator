@@ -20,4 +20,7 @@ Application Preview:
 Application on SAP HANA CLOUD Platform:
 [https://b2bcalculator-p1940822531trial.dispatcher.hanatrial.ondemand.com/index.html?hc_reset](https://b2bcalculator-p1940822531trial.dispatcher.hanatrial.ondemand.com/index.html?hc_reset)
 
+Direct link:
+[http://b2b.nafirme.pl/](http://b2b.nafirme.pl/)
+
 
