@@ -46,15 +46,22 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], function(JSONModel) {
 	};
 
 	B2BCalculator.prototype.buildUI5Model = function() {
+		var app = this;
+		
 		var oData = {
 			netValue: this.netValue,
 			netIncome: this.netIncome,
+			vatRate: this.vatRate,
 			vatValue: (this.vatValue *-1).toFixed(2),
 			clearIncome: this.clearIncome.toFixed(2),
+			typeOfSettlement: this.typeOfSettlement,
+			taxFree: this.taxFree,
 			donation18: (this.donation18 *-1).toFixed(2),
 			donation19: (this.donation19 *-1).toFixed(2),
 			donation32: this.donation32.toFixed(2),
 			donationTotal: (this.donationTotal * -1).toFixed(2),
+			socialType: this.socialType,
+			socialSickness: this.socialSickness,
 			socialContributionValue: (this.socialContributionValue * -1).toFixed(2),
 			healthContributionValue: (this.healthContributionValue * -1).toFixed(2),
 			laborFundContributionValue: (this.laborFundContributionValue * -1).toFixed(2),
@@ -65,6 +72,12 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], function(JSONModel) {
 		
 		var oModel = new sap.ui.model.json.JSONModel(oData);
 		this.app.getView().setModel(oModel);
+		
+		var binding = new sap.ui.model.Binding(oModel, "/", oModel.getContext("/"));
+		binding.attachChange(function() {
+			console.log('Recalculate!');
+			app.recalculate();
+		});			
 	};
 
 	B2BCalculator.prototype.recalculate = function() {
@@ -222,27 +235,22 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], function(JSONModel) {
 		this.netValue = netIncome;
 		//this.netIncome = netIncome * this.calcPeriod;
 		this.netIncome = netIncome;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setVatRate = function(vatRate) {
 		this.vatRate = vatRate;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setTypeOfSettlement = function(typeOfSettlement) {
 		this.typeOfSettlement = typeOfSettlement;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setSocialType = function(socialType) {
 		this.socialType = socialType;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setSocialSicknes = function(socialSickness) {
 		this.socialSickness = socialSickness;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setHealthContribution = function() {
@@ -260,17 +268,14 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], function(JSONModel) {
 
 	B2BCalculator.prototype.setTaxFree = function(taxFree) {
 		this.taxFree = taxFree;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setNetExpenses = function(netExpenses) {
 		this.netExpenses = netExpenses;
-		this.recalculate();
 	};
 
 	B2BCalculator.prototype.setVatExpenses = function(vatExpenses) {
 		this.vatExpenses = vatExpenses;
-		this.recalculate();
 	};
 
 	return B2BCalculator;
