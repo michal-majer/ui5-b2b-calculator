@@ -8,31 +8,88 @@
 						<l:content>
 							<VBox>
 								<!-- Input Form -->
-								<f:SimpleForm id="SimpleFormChange1" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveLayout" columnsL="2"
-									columnsM="1" labelSpanM="0" labelSpanL="0" labelSpanS="0" title="{i18n>form_income_header}" class="editableForm">
-									<f:content>
-										<Label text="{i18n>form_income_net_income}"/>
-										<Input id="idInvoiceIncome" value="{/netValue}" type="Number" maxLength="10" change="onIncomeChange" liveChange="onIncomeChange" valueLiveUpdate="true" />
-										<Label text="{i18n>form_income_vat_rate}"/>
-										<Select id="idVatRate" forceSelection="false" selectedKey="{/vatRate}" change="onVatRateChange">
-											<core:Item key="0" text="0%"/>
-											<core:Item key="5" text="5%"/>
-											<core:Item key="8" text="8%"/>
-											<core:Item key="23" text="23%"/>
-										</Select>
-										<Label text="{i18n>form_income_type_of_settlement}"/>
-										<Select id="idDonationType" forceSelection="false" selectedKey="{/typeOfSettlement}" change="onTypeOfSettlementChange">
-											<core:Item key="18" text="{i18n>select_donation_regular_type_of_settlement}"/>
-											<core:Item key="19" text="{i18n>select_donation_linear_type_of_settlement}"/>
-										</Select>
-										<Label text="{i18n>form_income_switch_tax_free}"/>
-										<Switch id="idTaxFreeAmount" state="{/taxFree}" customTextOn="Tak" customTextOff="Nie" change="onTaxFreeChange">
-											<layoutData>
-												<FlexItemData growFactor="1"/>
-											</layoutData>
-										</Switch>
-									</f:content>
-								</f:SimpleForm>
+								<f:Form id="SimpleFormChange1" editable="true" title="{i18n>form_income_header}">
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanL="5" labelSpanM="5" labelSpanS="12" emptySpanL="0" emptySpanM="0" emptySpanS="0" backgroundDesign="Solid"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{i18n>form_income_net_income}">
+													<f:fields>
+														<Input id="idInvoiceIncome" value="{/netValue}" type="Number" maxLength="10" change="onIncomeChange" liveChange="onIncomeChange"
+															valueLiveUpdate="true"/>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>form_income_vat_rate}">
+													<f:fields>
+														<Select id="idVatRate" forceSelection="false" selectedKey="{/vatRate}" change="onVatRateChange">
+															<core:Item key="0" text="0%"/>
+															<core:Item key="5" text="5%"/>
+															<core:Item key="8" text="8%"/>
+															<core:Item key="23" text="23%"/>
+														</Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>form_income_type_of_settlement}">
+													<f:fields>
+														<Select id="idDonationType" forceSelection="false" selectedKey="{/typeOfSettlement}" change="onTypeOfSettlementChange">
+															<core:Item key="18" text="{i18n>select_donation_regular_type_of_settlement}"/>
+															<core:Item key="19" text="{i18n>select_donation_linear_type_of_settlement}"/>
+															<layoutData>
+																<l:GridData span="L6 M5 S10"/>
+															</layoutData>
+														</Select>
+														<Button id="genericQuickView" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="25px"
+															press="handleGenericQuickViewPress">
+															<layoutData>
+																<l:GridData span="L1 M2 S2"/>
+															</layoutData>
+														</Button>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>form_income_switch_tax_free}">
+													<f:fields>
+														<Switch id="idTaxFreeAmount" state="{/taxFree}" customTextOn="Tak" customTextOff="Nie" change="onTaxFreeChange">
+															<layoutData>
+																<l:GridData span="L6 M5 S10"/>
+															</layoutData>
+														</Switch>
+														<Button id="genericQuickView2" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="25px"
+															press="handleTaxFreeQuickViewPress">
+															<layoutData>
+																<l:GridData span="L1 M2 S2"/>
+															</layoutData>
+														</Button>
+													</f:fields>
+												</f:FormElement>
+												<!--
+												<Label text="{i18n>form_income_net_income}"/>
+												<Input id="idInvoiceIncome" value="{/netValue}" type="Number" maxLength="10" change="onIncomeChange" liveChange="onIncomeChange"
+													valueLiveUpdate="true"/>
+												<Label text="{i18n>form_income_vat_rate}"/>
+												<Select id="idVatRate" forceSelection="false" selectedKey="{/vatRate}" change="onVatRateChange">
+													<core:Item key="0" text="0%"/>
+													<core:Item key="5" text="5%"/>
+													<core:Item key="8" text="8%"/>
+													<core:Item key="23" text="23%"/>
+												</Select>
+												<Label text="{i18n>form_income_type_of_settlement}"/>
+												<Select id="idDonationType" forceSelection="false" selectedKey="{/typeOfSettlement}" change="onTypeOfSettlementChange">
+													<core:Item key="18" text="{i18n>select_donation_regular_type_of_settlement}"/>
+													<core:Item key="19" text="{i18n>select_donation_linear_type_of_settlement}"/>
+												</Select>
+												<Button id="genericQuickView" class="sapUiSmallMarginBottom" icon="sap-icon://question-mark" type="Transparent" width="25px"
+													press="handleGenericQuickViewPress"/>
+												<Label text="{i18n>form_income_switch_tax_free}"/>
+												<Switch id="idTaxFreeAmount" state="{/taxFree}" customTextOn="Tak" customTextOff="Nie" change="onTaxFreeChange"></Switch>
+												<Button id="genericQuickView2" class="sapUiSmallMarginBottom" icon="sap-icon://question-mark" type="Transparent" width="25px"
+													press="handleGenericQuickViewPress"/>
+													-->
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
 								<f:SimpleForm id="SimpleFormChange2" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveLayout"
 									title="{i18n>form_socialsecurity_header}" columnsL="2" columnsM="1" labelSpanM="2" labelSpanL="2" labelSpanS="2" class="editableForm">
 									<f:content>
@@ -54,24 +111,27 @@
 									title="{i18n>form_expenses_header}" columnsL="2" columnsM="1" labelSpanM="2" labelSpanS="2" adjustLabelSpan="false" class="editableForm">
 									<f:content>
 										<Label text="{i18n>form_expenses_net_expenses}"/>
-										<Input id="idExpenses" value="{/netExpenses}" type="Number" maxLength="10" change="onNetExpensesChange" liveChange="onNetExpensesChange" valueLiveUpdate="true"/>
+										<Input id="idExpenses" value="{/netExpenses}" type="Number" maxLength="10" change="onNetExpensesChange" liveChange="onNetExpensesChange"
+											valueLiveUpdate="true"/>
 										<Label text="{i18n>form_expenses_vat_expenses}"/>
-										<Input id="idExpensesVAT" value="{/vatExpenses}" type="Number" maxLength="10" change="onVatExpensesChange" liveChange="onVatExpensesChange" valueLiveUpdate="true"/>
+										<Input id="idExpensesVAT" value="{/vatExpenses}" type="Number" maxLength="10" change="onVatExpensesChange" liveChange="onVatExpensesChange"
+											valueLiveUpdate="true"/>
 									</f:content>
 								</f:SimpleForm>
 							</VBox>
-							
 							<!-- Results -->
 							<List headerText="{i18n>output_header}" backgroundDesign="Solid">
-								<ObjectListItem icon="sap-icon://money-bills" title="{i18n>output_clear_income}" number="{/clearIncome}" numberUnit="ZŁ" numberState="Success"></ObjectListItem>
+								<ObjectListItem icon="sap-icon://money-bills" title="{i18n>output_clear_income}" number="{/clearIncome}" numberUnit="ZŁ"
+									numberState="Success"></ObjectListItem>
 								<ObjectListItem icon="sap-icon://commission-check" title="{i18n>output_vat_value}" number="{/vatValue}" numberUnit="ZŁ" numberState="Error"></ObjectListItem>
-								<ObjectListItem id="idListItemUS" class="noborder" icon="sap-icon://waiver" title="{i18n>output_donation_value}" number="{/donationTotal}" numberUnit="ZŁ"
-									numberState="Error"/>
-								<StandardListItem id="idListItem18" class="noborder" title="{i18n>output_donation_value_rate_18}" info="{/donation18}" infoState="Error"></StandardListItem>
-								<StandardListItem id="idListItem19" class="noborder" title="{i18n>output_donation_value_rate_19}" info="{/donation19}" infoState="Error" visible="false"></StandardListItem>
-								<StandardListItem id="idListItem32" class="noborder" title="{i18n>output_donation_value_rate_32}" info="{/donation32}" infoState="Error"></StandardListItem>
-								<ObjectListItem class="noborder bordertop" icon="sap-icon://building" title="{i18n>output_social_contribute_value}" number="{/totalSocialContributionValue}"
+								<ObjectListItem id="idListItemUS" class="noborder" icon="sap-icon://waiver" title="{i18n>output_donation_value}" number="{/donationTotal}"
 									numberUnit="ZŁ" numberState="Error"/>
+								<StandardListItem id="idListItem18" class="noborder" title="{i18n>output_donation_value_rate_18}" info="{/donation18}" infoState="Error"></StandardListItem>
+								<StandardListItem id="idListItem19" class="noborder" title="{i18n>output_donation_value_rate_19}" info="{/donation19}" infoState="Error"
+									visible="false"></StandardListItem>
+								<StandardListItem id="idListItem32" class="noborder" title="{i18n>output_donation_value_rate_32}" info="{/donation32}" infoState="Error"></StandardListItem>
+								<ObjectListItem class="noborder bordertop" icon="sap-icon://building" title="{i18n>output_social_contribute_value}"
+									number="{/totalSocialContributionValue}" numberUnit="ZŁ" numberState="Error"/>
 								<StandardListItem class="noborder" title="{i18n>output_social_contribute}" info="{/socialContributionValue}" infoState="Error"></StandardListItem>
 								<StandardListItem class="noborder" title="{i18n>output_health_contribute}" info="{/healthContributionValue}" infoState="Error"></StandardListItem>
 								<StandardListItem title="{i18n>output_labor_fund_contribute}" info="{/laborFundContributionValue}" infoState="Error"></StandardListItem>
