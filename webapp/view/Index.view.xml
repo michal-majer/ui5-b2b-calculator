@@ -18,7 +18,16 @@
 												<f:FormElement label="{i18n>form_income_net_income}">
 													<f:fields>
 														<Input id="idInvoiceIncome" value="{/netValue}" type="Number" maxLength="10" change="onIncomeChange" liveChange="onIncomeChange"
-															valueLiveUpdate="true"/>
+															valueLiveUpdate="true">
+															<layoutData>
+																<l:GridData span="L6 M5 S9"/>
+															</layoutData>
+														</Input>
+														<Button class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="40px" press="handleNettoQuickViewPress">
+															<layoutData>
+																<l:GridData span="L1 M2 S3"/>
+															</layoutData>
+														</Button>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="{i18n>form_income_vat_rate}">
@@ -28,6 +37,9 @@
 															<core:Item key="5" text="5%"/>
 															<core:Item key="8" text="8%"/>
 															<core:Item key="23" text="23%"/>
+															<layoutData>
+																<l:GridData span="L6 M5 S9"/>
+															</layoutData>
 														</Select>
 													</f:fields>
 												</f:FormElement>
@@ -37,13 +49,13 @@
 															<core:Item key="18" text="{i18n>select_donation_regular_type_of_settlement}"/>
 															<core:Item key="19" text="{i18n>select_donation_linear_type_of_settlement}"/>
 															<layoutData>
-																<l:GridData span="L6 M5 S10"/>
+																<l:GridData span="L6 M5 S9"/>
 															</layoutData>
 														</Select>
-														<Button id="genericQuickView" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="25px"
+														<Button id="genericQuickView" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="40px"
 															press="handleGenericQuickViewPress">
 															<layoutData>
-																<l:GridData span="L1 M2 S2"/>
+																<l:GridData span="L1 M2 S3"/>
 															</layoutData>
 														</Button>
 													</f:fields>
@@ -52,61 +64,96 @@
 													<f:fields>
 														<Switch id="idTaxFreeAmount" state="{/taxFree}" customTextOn="Tak" customTextOff="Nie" change="onTaxFreeChange">
 															<layoutData>
-																<l:GridData span="L6 M5 S10"/>
+																<l:GridData span="L6 M5 S4"/>
 															</layoutData>
 														</Switch>
-														<Button id="genericQuickView2" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="25px"
+														<Button id="genericQuickView2" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="40px"
 															press="handleTaxFreeQuickViewPress">
 															<layoutData>
-																<l:GridData span="L1 M2 S2"/>
+																<l:GridData span="L1 M2 S8"/>
 															</layoutData>
 														</Button>
 													</f:fields>
 												</f:FormElement>
-												<!--
-												<Label text="{i18n>form_income_net_income}"/>
-												<Input id="idInvoiceIncome" value="{/netValue}" type="Number" maxLength="10" change="onIncomeChange" liveChange="onIncomeChange"
-													valueLiveUpdate="true"/>
-												<Label text="{i18n>form_income_vat_rate}"/>
-												<Select id="idVatRate" forceSelection="false" selectedKey="{/vatRate}" change="onVatRateChange">
-													<core:Item key="0" text="0%"/>
-													<core:Item key="5" text="5%"/>
-													<core:Item key="8" text="8%"/>
-													<core:Item key="23" text="23%"/>
-												</Select>
-												<Label text="{i18n>form_income_type_of_settlement}"/>
-												<Select id="idDonationType" forceSelection="false" selectedKey="{/typeOfSettlement}" change="onTypeOfSettlementChange">
-													<core:Item key="18" text="{i18n>select_donation_regular_type_of_settlement}"/>
-													<core:Item key="19" text="{i18n>select_donation_linear_type_of_settlement}"/>
-												</Select>
-												<Button id="genericQuickView" class="sapUiSmallMarginBottom" icon="sap-icon://question-mark" type="Transparent" width="25px"
-													press="handleGenericQuickViewPress"/>
-												<Label text="{i18n>form_income_switch_tax_free}"/>
-												<Switch id="idTaxFreeAmount" state="{/taxFree}" customTextOn="Tak" customTextOff="Nie" change="onTaxFreeChange"></Switch>
-												<Button id="genericQuickView2" class="sapUiSmallMarginBottom" icon="sap-icon://question-mark" type="Transparent" width="25px"
-													press="handleGenericQuickViewPress"/>
-													-->
 											</f:formElements>
 										</f:FormContainer>
 									</f:formContainers>
 								</f:Form>
-								<f:SimpleForm id="SimpleFormChange2" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveLayout"
-									title="{i18n>form_socialsecurity_header}" columnsL="2" columnsM="1" labelSpanM="2" labelSpanL="2" labelSpanS="2" class="editableForm">
-									<f:content>
-										<Label text="{i18n>form_socialsecurity_switch_social_type}"/>
-										<Switch id="idReducedPremiumsSwitch" state="{/socialType}" customTextOn="Tak" customTextOff="Nie" change="onSocialSecurityChange">
-											<layoutData>
-												<FlexItemData growFactor="1"/>
-											</layoutData>
-										</Switch>
-										<Label text="{i18n>form_socialsecurity_switch_health_contribute}"/>
-										<Switch id="idSocialSicknessSwitch" state="{/socialSickness}" customTextOn="Tak" customTextOff="Nie" change="onSocialSicknessChange">
-											<layoutData>
-												<FlexItemData growFactor="1"/>
-											</layoutData>
-										</Switch>
-									</f:content>
-								</f:SimpleForm>
+								<f:Form id="SimpleFormChange2" editable="true" title="{i18n>form_socialsecurity_header}">
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanL="5" labelSpanM="5" labelSpanS="12" emptySpanL="0" emptySpanM="0" emptySpanS="0" backgroundDesign="Solid"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{i18n>form_socialsecurity_switch_social_type}">
+													<Switch id="idReducedPremiumsSwitch" state="{/socialType}" customTextOn="Tak" customTextOff="Nie" change="onSocialSecurityChange">
+														<layoutData>
+															<FlexItemData growFactor="1"/>
+															<l:GridData span="L6 M5 S4"/>
+														</layoutData>
+													</Switch>
+													<Button id="genericQuickView3" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="40px"
+														press="handleSocialQuickViewPress">
+														<layoutData>
+															<l:GridData span="L1 M2 S8"/>
+														</layoutData>
+													</Button>
+												</f:FormElement>
+											</f:formElements>
+											<f:formElements>
+												<f:FormElement label="{i18n>form_socialsecurity_switch_health_contribute}">
+													<Switch id="idSocialSicknessSwitch" state="{/socialSickness}" customTextOn="Tak" customTextOff="Nie" change="onSocialSicknessChange">
+														<layoutData>
+															<FlexItemData growFactor="1"/>
+															<l:GridData span="L6 M5 S4"/>
+														</layoutData>
+													</Switch>
+													<Button id="genericQuickView4" class="sapUiSmallMarginBeginEnd" icon="sap-icon://question-mark" type="Transparent" width="40px"
+														press="handleHealthQuickViewPress">
+														<layoutData>
+															<l:GridData span="L1 M2 S8"/>
+														</layoutData>
+													</Button>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+								<f:Form id="SimpleFormChange3" editable="true" title="{i18n>form_expenses_header}">
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanL="5" labelSpanM="5" labelSpanS="12" emptySpanL="0" emptySpanM="0" emptySpanS="0" backgroundDesign="Solid"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer>
+											<f:formElements>
+												<f:FormElement label="{i18n>form_expenses_net_expenses}">
+													<f:fields>
+														<Input id="idExpenses" value="{/netExpenses}" type="Number" maxLength="10" change="onNetExpensesChange" liveChange="onNetExpensesChange"
+															valueLiveUpdate="true">
+															<layoutData>
+																<l:GridData span="L6 M5 S9"/>
+															</layoutData>
+														</Input>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+											<f:formElements>
+												<f:FormElement label="{i18n>form_expenses_vat_expenses}">
+													<f:fields>
+														<Input id="idExpensesVAT" value="{/vatExpenses}" type="Number" maxLength="10" change="onVatExpensesChange" liveChange="onVatExpensesChange"
+															valueLiveUpdate="true">
+															<layoutData>
+																<l:GridData span="L6 M5 S9"/>
+															</layoutData>
+														</Input>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+								<!--
 								<f:SimpleForm id="SimpleFormChange3" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveLayout"
 									title="{i18n>form_expenses_header}" columnsL="2" columnsM="1" labelSpanM="2" labelSpanS="2" adjustLabelSpan="false" class="editableForm">
 									<f:content>
@@ -118,6 +165,7 @@
 											valueLiveUpdate="true"/>
 									</f:content>
 								</f:SimpleForm>
+								-->
 							</VBox>
 							<!-- Results -->
 							<List headerText="{i18n>output_header}" backgroundDesign="Solid">

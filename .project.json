@@ -6,7 +6,8 @@
   "build": {
     "targetFolder": "dist",
     "sourceFolder": "webapp",
-    "buildRequired": true
+    "buildRequired": true,
+    "lastBuildDateTime": "Wed, 21 Sep 2016 12:54:34 GMT"
   },
   "generation": [
     {
@@ -33,5 +34,10 @@
     "notifyBeforePushLevel": "Error",
     "blockPush": false,
     "blockPushLevel": "Error"
+  },
+  "hcpdeploy": {
+    "account": "p1940822531trial",
+    "name": "b2bcalculator",
+    "lastVersionWeTriedToDeploy": "1.0.1"
   }
 }
