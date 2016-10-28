@@ -11,3 +11,4 @@ mock_preview_sapui5.html
 .*/mock_preview_sapui5.html
 /.user.project.json
 /dist/
+/webapp/preview_hidden.html

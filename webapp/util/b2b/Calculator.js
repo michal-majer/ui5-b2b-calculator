@@ -273,10 +273,18 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], function(JSONModel) {
 	B2BCalculator.prototype.setNetExpenses = function(netExpenses) {
 		this.netExpenses = netExpenses;
 	};
-
+	
+	B2BCalculator.prototype.getNetExpenses = function() {
+		return this.netExpenses;
+	};
+	
 	B2BCalculator.prototype.setVatExpenses = function(vatExpenses) {
 		this.vatExpenses = vatExpenses;
 	};
+	
+	B2BCalculator.prototype.getVatExpenses = function() {
+		return this.vatExpenses;
+	};	
 
 	return B2BCalculator;
 

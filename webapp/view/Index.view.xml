@@ -1,6 +1,6 @@
 <mvc:View controllerName="mm.controller.Index" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
 	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
-	<App>
+	<App id="idApp">
 		<pages>
 			<Page title="{i18n>title}">
 				<content>
@@ -147,6 +147,17 @@
 																<l:GridData span="L6 M5 S9"/>
 															</layoutData>
 														</Input>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+											<f:formElements>
+												<f:FormElement>
+													<f:fields>
+														<Button text="{i18n>form_expenses_add_expenses_button}" icon="sap-icon://add" type="Emphasized" press="onDraggableDialog">
+															<layoutData>
+																<l:GridData indent="L5 M5 S5" span="L5 M5 S8"/>
+															</layoutData>
+														</Button>
 													</f:fields>
 												</f:FormElement>
 											</f:formElements>

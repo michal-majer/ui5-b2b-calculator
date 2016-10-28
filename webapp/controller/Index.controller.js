@@ -1,12 +1,24 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"mm/util/b2b/Calculator",
-	'sap/ui/model/json/JSONModel'
-], function(Controller, B2BCalculator, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/m/Dialog",
+	"sap/m/Button",
+	"sap/ui/commons/Label",
+	"sap/m/Input",
+	"sap/m/CheckBox",
+	"sap/m/Select",
+	"sap/ui/core/Item",
+	"sap/ui/layout/form/SimpleForm"
+], function(Controller, B2BCalculator, JSONModel, Dialog, Button, Label, Input, CheckBox, Select, Item, SimpleForm) {
 	"use strict";
+	
+	var oB2B;
 
 	return Controller.extend("mm.controller.Index", {
-
+		
+		
+		
 		oQuickViewNettoModel: new JSONModel(),
 		oSettlementModel: new JSONModel(),
 		oTaxFreeDataModel: new JSONModel(),
@@ -15,7 +27,8 @@ sap.ui.define([
 
 		onInit: function() {
 			this.oB2B = new B2BCalculator(this);
-			
+			oB2B = this.oB2B;
+
 			var mQuickViewNettoExplainData = {
 				pages: [{
 					pageId: "QuickViewNettoExplainId",
@@ -55,7 +68,7 @@ sap.ui.define([
 					}]
 				}]
 			};
-			
+
 			var mTaxFreeData = {
 				pages: [{
 					pageId: "taxFreeIdPage",
@@ -69,7 +82,7 @@ sap.ui.define([
 					}]
 				}]
 			};
-			
+
 			var mQuickViewSocialContributeExplainData = {
 				pages: [{
 					pageId: "QuickViewSocialContributeExplainId",
@@ -83,7 +96,7 @@ sap.ui.define([
 					}]
 				}]
 			};
-			
+
 			var mQuickViewHealthContributeExplainData = {
 				pages: [{
 					pageId: "QuickViewSocialContributeExplainId",
@@ -120,6 +133,123 @@ sap.ui.define([
 				this._oQuickView.openBy(oButton);
 			});
 		},
+
+		onDraggableDialog: function(oEvent) {
+			var dialog = new Dialog({
+				title: 'Dodaj koszt',
+				contentWidth: "150px",
+				contentHeight: "320px",
+				draggable: true,
+				content:
+					new SimpleForm({ 
+						layout: sap.ui.layout.form.SimpleFormLayout.ResponsiveGridLayout,
+						content: [
+							new Label ({ text:"Kwota netto" }),
+							new Input ({ 
+								id: "idDialogExpenseNet",
+								type: "Number",
+								maxLength: 10,
+								change: [this.onDialogExpenseNetChange, this],
+								liveChange: this.onDialogExpenseNetChange,
+								valueLiveUpdate: true
+							}),
+							
+							new Label ({ text:"Stawka VAT" }),
+							new Select ({ 
+								id: "idDialogExpensVatRate",
+								change: [this.onDialogVatRateChange, this],
+								selectedKey: 23,
+								items: [
+									new Item({ key: 0, text: "0%" }),
+									new Item({ key: 5, text: "5%" }),
+									new Item({ key: 8, text: "8%" }),
+									new Item({ key: 23, text: "23%" })
+								]
+							}),
+							
+							new Label ({ text:"Kwota brutto" }),
+							new Input ({ 
+								id: "idDialogExpenseGross",
+								type: "Number",
+								maxLength: 10,
+								change: [this.onDialogExpenseGrossChange, this],
+								liveChange: this.onDialogExpenseGrossChange,
+								valueLiveUpdate: true
+							}),
+							new CheckBox ({
+								id: "idDialog50VatCheckBox",
+								text: "Odlicz 50% VAT"
+							})
+						]
+					})
+				,
+				endButton: new Button({
+					text: 'Dodaj',
+					type: sap.m.ButtonType.Accept,
+					press: [function() {
+						var currentNetExpenses = this.oB2B.getNetExpenses();
+						var currentVatExpenses = this.oB2B.getVatExpenses();
+						
+						var vatHalfCheck = sap.ui.getCore().byId("idDialog50VatCheckBox").getSelected();
+						var vatExpense = parseFloat(sap.ui.getCore().byId("idDialogExpenseGross").getValue()) - (parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue()));
+						
+						if(vatHalfCheck) {
+							var halfVat = vatExpense / 2;
+							currentNetExpenses += parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue());
+							currentNetExpenses += halfVat;
+							currentVatExpenses += halfVat;
+						} else {
+							currentNetExpenses += parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue());
+							currentVatExpenses += (parseFloat(sap.ui.getCore().byId("idDialogExpenseGross").getValue())) - (parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue()));
+						}
+						
+						this.oB2B.setNetExpenses((currentNetExpenses).toFixed(2));
+						this.oB2B.setVatExpenses((currentVatExpenses).toFixed(2));
+						
+						this.getView().byId("idExpenses").setValue(currentNetExpenses.toFixed(2));
+						this.getView().byId("idExpensesVAT").setValue(currentVatExpenses.toFixed(2));
+						
+						this.close();
+					}, this]
+				}),
+				beginButton: new Button({
+					text: 'Anuluj',
+					type: sap.m.ButtonType.Reject,
+					press: function() {
+						dialog.close();
+					}
+				}),
+				afterClose: function() {
+					dialog.destroy();
+				}
+			});
+
+			//to get access to the global model
+			this.getView().addDependent(dialog);
+			dialog.open();
+		},
+		
+		onDialogExpenseNetChange: function(oEvent) {
+			var vatRate = sap.ui.getCore().byId("idDialogExpensVatRate").getSelectedKey();
+			var net = oEvent.getSource().getValue();
+			var vatValue = ( vatRate * net ) / 100;
+			sap.ui.getCore().byId("idDialogExpenseGross").setValue((parseFloat(net) + vatValue).toFixed(2));
+		},
+		
+		onDialogVatRateChange: function(oEvent) {
+			var net = sap.ui.getCore().byId("idDialogExpenseNet").getValue();
+			var vatRate = oEvent.getSource().getSelectedKey();
+			var vatValue = ( vatRate * net ) / 100;
+			sap.ui.getCore().byId("idDialogExpenseGross").setValue((parseFloat(net) + vatValue).toFixed(2));
+		},
+		
+		onDialogExpenseGrossChange: function(oEvent) {
+			var vatRate = parseInt(sap.ui.getCore().byId("idDialogExpensVatRate").getSelectedKey());
+			var gross = parseFloat(oEvent.getSource().getValue());
+			var netValue = ( gross * 100 ) / (100 + vatRate);
+			
+			sap.ui.getCore().byId("idDialogExpenseNet").setValue((parseFloat(netValue.toFixed(2))));
+		},		
 		
 		handleNettoQuickViewPress: function(oEvent) {
 			this.openQuickView(oEvent, this.oQuickViewNettoModel);
@@ -128,15 +258,15 @@ sap.ui.define([
 		handleGenericQuickViewPress: function(oEvent) {
 			this.openQuickView(oEvent, this.oSettlementModel);
 		},
-		
+
 		handleTaxFreeQuickViewPress: function(oEvent) {
-			this.openQuickView(oEvent, this.oTaxFreeDataModel);	
+			this.openQuickView(oEvent, this.oTaxFreeDataModel);
 		},
-		
+
 		handleSocialQuickViewPress: function(oEvent) {
 			this.openQuickView(oEvent, this.oQuickViewSocialContributeModel);
 		},
-		
+
 		handleHealthQuickViewPress: function(oEvent) {
 			this.openQuickView(oEvent, this.oQuickViewHealthContributeModel);
 		},
@@ -148,6 +278,7 @@ sap.ui.define([
 				this.getView().addDependent(this._oPopover);
 				//this._oPopover.bindElement("/ProductCollection/0");
 			}
+			
 
 			// delay because addDependent will do a async rerendering and the actionSheet will immediately close without it.
 			var oButton = oEvent.getSource();
