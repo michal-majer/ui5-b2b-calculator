@@ -8,7 +8,7 @@
     "targetFolder": "dist",
     "sourceFolder": "webapp",
     "buildRequired": true,
-    "lastBuildDateTime": "Thu, 22 Sep 2016 13:08:59 GMT"
+    "lastBuildDateTime": "Fri, 28 Oct 2016 11:44:29 GMT"
   },
   "generation": [
     {
@@ -39,7 +39,7 @@
   "hcpdeploy": {
     "account": "p1940822531trial",
     "name": "b2bcalculator",
-    "lastVersionWeTriedToDeploy": "1.0.2"
+    "lastVersionWeTriedToDeploy": "1.0.3"
   },
   "hybrid": {
     "hatVersion": "1.19.2"

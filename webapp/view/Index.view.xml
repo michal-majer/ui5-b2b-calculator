@@ -155,7 +155,7 @@
 													<f:fields>
 														<Button text="{i18n>form_expenses_add_expenses_button}" icon="sap-icon://add" type="Emphasized" press="onDraggableDialog">
 															<layoutData>
-																<l:GridData indent="L5 M5 S5" span="L5 M5 S8"/>
+																<l:GridData indent="L5 M5 S0" span="L5 M5 S9"/>
 															</layoutData>
 														</Button>
 													</f:fields>

@@ -195,12 +195,20 @@ sap.ui.define([
 						
 						if(vatHalfCheck) {
 							var halfVat = vatExpense / 2;
-							currentNetExpenses += parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue());
-							currentNetExpenses += halfVat;
-							currentVatExpenses += halfVat;
+							currentNetExpenses = parseFloat(currentNetExpenses) + parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue());
+							currentNetExpenses = parseFloat(currentNetExpenses) + parseFloat(halfVat);
+							currentVatExpenses = parseFloat(currentVatExpenses) + parseFloat(halfVat);
 						} else {
-							currentNetExpenses += parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue());
-							currentVatExpenses += (parseFloat(sap.ui.getCore().byId("idDialogExpenseGross").getValue())) - (parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue()));
+							var net = parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue());
+							var vat = (parseFloat(sap.ui.getCore().byId("idDialogExpenseGross").getValue())) - (parseFloat(sap.ui.getCore().byId("idDialogExpenseNet").getValue()));
+							
+							if( net !== null) {
+								currentNetExpenses = parseFloat(currentNetExpenses) + parseFloat(net);	
+							}
+							
+							if( vat !== null) {
+								currentVatExpenses = parseFloat(currentVatExpenses) + parseFloat(vat);
+							}
 						}
 						
 						this.oB2B.setNetExpenses((currentNetExpenses).toFixed(2));
