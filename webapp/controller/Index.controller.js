@@ -51,10 +51,10 @@ sap.ui.define([
 						heading: "Progresywna skala podatkowa",
 						elements: [{
 							label: "Opis",
-							value: "Opodatkowanie na zasadach ogólnych według skali podatkowej polega na opłaceniu podatku w wysokości 18% od podstawy opodatkowania nieprzekraczającej 85 528 zł oraz według stawki 32% od nadwyżki ponad 85 528 zł. Warto zaznaczyć, że w przypadku podatku obliczanego według skali, podstawę opodatkowania można obniżyć o kwotę wolną o podatku wynoszącą 556,02 zł."
+							value: "Opodatkowanie na zasadach ogólnych według skali podatkowej polega na opłaceniu podatku w wysokości 17% od podstawy opodatkowania nieprzekraczającej 85 528 zł oraz według stawki 32% od nadwyżki ponad 85 528 zł. Warto zaznaczyć, że w przypadku podatku obliczanego według skali, podstawę opodatkowania można obniżyć o kwotę wolną o podatku wynoszącą 556,02 zł."
 						}, {
 							label: "Skala I",
-							value: "18% od podstawy opodatkowania nieprzekraczającej 85 528 zł."
+							value: "17% od podstawy opodatkowania nieprzekraczającej 85 528 zł."
 						}, {
 							label: "Skala II",
 							value: "32% od nadwyżki ponad 85 528 zł."
@@ -319,14 +319,14 @@ sap.ui.define([
 			};
 
 			var switchToProgressiveSettlment = function(app) {
-				app.byId('idListItem18').setVisible(true);
+				app.byId('idListItem17').setVisible(true);
 				app.byId('idListItem19').setVisible(false);
 				app.byId('idListItem32').setVisible(true);
 				enableTaxFreeSwitch(app);
 			};
 
 			var switchToLinearSettlement = function(app) {
-				app.byId('idListItem18').setVisible(false);
+				app.byId('idListItem17').setVisible(false);
 				app.byId('idListItem19').setVisible(true);
 				app.byId('idListItem32').setVisible(false);
 				disableTaxFreeSwitch(app);
@@ -336,7 +336,7 @@ sap.ui.define([
 			this.oB2B.setTypeOfSettlement(selectedTypeOfSettlement);
 
 			switch (selectedTypeOfSettlement) {
-				case "18":
+				case "17":
 					switchToProgressiveSettlment(this);
 					break;
 
