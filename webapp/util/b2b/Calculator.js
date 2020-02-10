@@ -9,7 +9,7 @@ sap.ui.define(['sap/ui/model/json/JSONModel'], function(JSONModel) {
     HIGH_SOCIAL_TYPE = false,
     WITHOUT_SICKNESS = false,
     WITH_SICKNESS = true,
-    TAX_SCALE = '18',
+    TAX_SCALE = '17',
     TAX_SCALE_LVL_2 = 85528.0,
     TAX_FLAT = '19',
     TAXFREE_ALLOWANCE = 556.02,
@@ -49,7 +49,7 @@ sap.ui.define(['sap/ui/model/json/JSONModel'], function(JSONModel) {
       clearIncome: this.clearIncome.toFixed(2),
       typeOfSettlement: this.typeOfSettlement,
       taxFree: this.taxFree,
-      donation18: (this.donation18 * -1).toFixed(2),
+      donation17: (this.donation17 * -1).toFixed(2),
       donation19: (this.donation19 * -1).toFixed(2),
       donation32: this.donation32.toFixed(2),
       donationTotal: (this.donationTotal * -1).toFixed(2),
@@ -113,7 +113,7 @@ sap.ui.define(['sap/ui/model/json/JSONModel'], function(JSONModel) {
       }
     } else {
       this.donationTotal = 0;
-      this.donation18 = 0;
+      this.donation17 = 0;
       this.donation19 = 0;
       this.donation32 = 0;
     }
@@ -123,18 +123,18 @@ sap.ui.define(['sap/ui/model/json/JSONModel'], function(JSONModel) {
     var income =
       this.netIncome - this.netExpenses - this.socialContributionValue;
 
-    var income18 = 0,
+    var income17 = 0,
       income32 = 0;
 
     if (income > TAX_SCALE_LVL_2) {
-      income18 = TAX_SCALE_LVL_2;
-      income32 = income - income18;
+      income17 = TAX_SCALE_LVL_2;
+      income32 = income - income17;
 
-      this.donation18 = this.calcPercentOfValue(18, income18);
+      this.donation17 = this.calcPercentOfValue(17, income17);
       this.donation32 = this.calcPercentOfValue(32, income32);
     } else {
-      income18 = income;
-      this.donation18 = this.calcPercentOfValue(18, income18);
+      income17 = income;
+      this.donation17 = this.calcPercentOfValue(17, income17);
       this.donation32 = 0;
     }
 
@@ -143,23 +143,23 @@ sap.ui.define(['sap/ui/model/json/JSONModel'], function(JSONModel) {
       this.donation32 >= this.healthContributeTaxReduce
     ) {
       this.donation32 -= this.healthContributeTaxReduce;
-    } else if (this.donation18 >= this.healthContributeTaxReduce) {
-      this.donation18 -= this.healthContributeTaxReduce;
+    } else if (this.donation17 >= this.healthContributeTaxReduce) {
+      this.donation17 -= this.healthContributeTaxReduce;
     } else {
-      this.donation18 = 0;
+      this.donation17 = 0;
     }
 
     if (this.taxFree) {
       if (this.donation32 !== 0 && this.donation32 >= TAXFREE_ALLOWANCE) {
         this.donation32 -= TAXFREE_ALLOWANCE;
-      } else if (this.donation18 >= TAXFREE_ALLOWANCE) {
-        this.donation18 -= TAXFREE_ALLOWANCE;
+      } else if (this.donation17 >= TAXFREE_ALLOWANCE) {
+        this.donation17 -= TAXFREE_ALLOWANCE;
       } else {
-        this.donation18 = 0;
+        this.donation17 = 0;
       }
     }
 
-    this.donationTotal = this.donation18 + this.donation32;
+    this.donationTotal = this.donation17 + this.donation32;
   };
 
   B2BCalculator.prototype.checkIfIncomeTax = function() {
