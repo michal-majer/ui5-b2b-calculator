@@ -46,7 +46,7 @@
 												<f:FormElement label="{i18n>form_income_type_of_settlement}">
 													<f:fields>
 														<Select id="idDonationType" forceSelection="false" selectedKey="{/typeOfSettlement}" change="onTypeOfSettlementChange">
-															<core:Item key="18" text="{i18n>select_donation_regular_type_of_settlement}"/>
+															<core:Item key="17" text="{i18n>select_donation_regular_type_of_settlement}"/>
 															<core:Item key="19" text="{i18n>select_donation_linear_type_of_settlement}"/>
 															<layoutData>
 																<l:GridData span="L6 M5 S9"/>
@@ -185,7 +185,7 @@
 								<ObjectListItem icon="sap-icon://commission-check" title="{i18n>output_vat_value}" number="{/vatValue}" numberUnit="ZŁ" numberState="Error"></ObjectListItem>
 								<ObjectListItem id="idListItemUS" class="noborder" icon="sap-icon://waiver" title="{i18n>output_donation_value}" number="{/donationTotal}"
 									numberUnit="ZŁ" numberState="Error"/>
-								<StandardListItem id="idListItem18" class="noborder" title="{i18n>output_donation_value_rate_18}" info="{/donation18}" infoState="Error"></StandardListItem>
+								<StandardListItem id="idListItem18" class="noborder" title="{i18n>output_donation_value_rate_17}" info="{/donation18}" infoState="Error"></StandardListItem>
 								<StandardListItem id="idListItem19" class="noborder" title="{i18n>output_donation_value_rate_19}" info="{/donation19}" infoState="Error"
 									visible="false"></StandardListItem>
 								<StandardListItem id="idListItem32" class="noborder" title="{i18n>output_donation_value_rate_32}" info="{/donation32}" infoState="Error"></StandardListItem>
