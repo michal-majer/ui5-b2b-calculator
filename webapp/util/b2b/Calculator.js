@@ -1,7 +1,7 @@
 sap.ui.define(['sap/ui/model/json/JSONModel'], function(JSONModel) {
   var LOW_SOCIAL = 227.69,
     LOW_SOCIAL_WITH_SICKNESS = 246.8,
-    HIGH_SOCIAL = 863.09,
+    HIGH_SOCIAL = 915.46,
     HIGH_SOCIAL_WITH_SICKNESS = 992.30,
     HEALTH = 362.34,
     LABOR_FUND = 76.84,
