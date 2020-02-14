@@ -1,0 +1,25 @@
+{
+  "name": "ui5-b2b-calculator",
+  "version": "1.0.0",
+  "description": "B2B Calculator is application that allows users who are emplyed on contract (B2B) to calculate:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michal-majer/ui5-b2b-calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michal-majer/ui5-b2b-calculator/issues"
+  },
+  "homepage": "https://github.com/michal-majer/ui5-b2b-calculator#readme",
+  "dependencies": {
+    "@openui5/sap.m": "^1.74.0",
+    "@openui5/sap.ui.commons": "^1.74.0",
+    "@openui5/sap.ui.core": "^1.74.0",
+    "@openui5/themelib_sap_belize": "^1.74.0"
+  }
+}
