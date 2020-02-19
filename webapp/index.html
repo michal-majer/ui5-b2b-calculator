@@ -8,7 +8,7 @@
 		<title>Kalkulator wynagrodzenia B2B</title>
 
 		<script id="sap-ui-bootstrap"
-			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+			src="/resources/sap-ui-core.js"
 			data-sap-ui-libs="sap.m"
 			data-sap-ui-theme="sap_belize"
 			data-sap-ui-compatVersion="1.16"
@@ -31,7 +31,17 @@
 					})
 				}).placeAt("content");
 			});
-		</script>	
+		</script>
+
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-84617416-1"></script>
+			<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+	
+				gtag('config', 'UA-84617416-1');
+			</script>		
 	</head>
 
 	<body class="sapUiBody" id="content">
