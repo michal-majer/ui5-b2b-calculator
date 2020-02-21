@@ -185,7 +185,7 @@
 								<ObjectListItem icon="sap-icon://commission-check" title="{i18n>output_vat_value}" number="{/vatValue}" numberUnit="ZŁ" numberState="Error"></ObjectListItem>
 								<ObjectListItem id="idListItemUS" class="noborder" icon="sap-icon://waiver" title="{i18n>output_donation_value}" number="{/donationTotal}"
 									numberUnit="ZŁ" numberState="Error"/>
-								<StandardListItem id="idListItem18" class="noborder" title="{i18n>output_donation_value_rate_17}" info="{/donation17}" infoState="Error"></StandardListItem>
+								<StandardListItem id="idListItem17" class="noborder" title="{i18n>output_donation_value_rate_17}" info="{/donation17}" infoState="Error"></StandardListItem>
 								<StandardListItem id="idListItem19" class="noborder" title="{i18n>output_donation_value_rate_19}" info="{/donation19}" infoState="Error"
 									visible="false"></StandardListItem>
 								<StandardListItem id="idListItem32" class="noborder" title="{i18n>output_donation_value_rate_32}" info="{/donation32}" infoState="Error"></StandardListItem>
